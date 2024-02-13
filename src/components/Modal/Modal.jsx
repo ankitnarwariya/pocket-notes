@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Modal = ({ closeModal }) => {
+const Modal = ({ closeModal, addGroupToList }) => {
+  const [groupName, setGroupName] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
+
   const handleModalClick = (e) => {
-    // Prevent event propagation to avoid closing the modal when clicking inside it
     e.stopPropagation();
   };
 
   const handleOutsideClick = () => {
-    // Close the modal when clicking outside of it
     closeModal();
+  };
+
+  const handleInputChange = (e) => {
+    setGroupName(e.target.value);
+  };
+
+  const handleColorClick = (color) => {
+    setSelectedColor(color);
+  };
+
+  const handleCreateGroup = () => {
+    if (groupName.trim() !== "" && selectedColor !== "") {
+      const group = { name: groupName, color: selectedColor };
+      addGroupToList(group);
+      closeModal();
+    }
   };
 
   return (
@@ -18,22 +35,52 @@ const Modal = ({ closeModal }) => {
           <h4>Create New group</h4>
           <div className="input-group">
             <label htmlFor="group-name">Group Name</label>
-            <input type="text" placeholder="Enter group name" id="group-name" />
+            <input
+              type="text"
+              placeholder="Enter group name"
+              id="group-name"
+              value={groupName}
+              onChange={handleInputChange}
+            />
           </div>
 
           <div className="input-group">
             <label htmlFor="Choose-color">Choose colour</label>
             <div className="choose-color">
-              <span id="B38BFA" className="color-box"></span>
-              <span id="FF79F2" className="color-box"></span>
-              <span id="43E6FC" className="color-box"></span>
-              <span id="F19576" className="color-box"></span>
-              <span id="0047FF" className="color-box"></span>
-              <span id="6691FF" className="color-box"></span>
+              <span
+                className="color-box"
+                onClick={() => handleColorClick("B38BFA")}
+                style={{ background: "#B38BFA" }}
+              ></span>
+              <span
+                className="color-box"
+                onClick={() => handleColorClick("FF79F2")}
+                style={{ background: "#FF79F2" }}
+              ></span>
+              <span
+                className="color-box"
+                onClick={() => handleColorClick("43E6FC")}
+                style={{ background: "#43E6FC" }}
+              ></span>
+              <span
+                className="color-box"
+                onClick={() => handleColorClick("F19576")}
+                style={{ background: "#F19576" }}
+              ></span>
+              <span
+                className="color-box"
+                onClick={() => handleColorClick("0047FF")}
+                style={{ background: "#0047FF" }}
+              ></span>
+              <span
+                className="color-box"
+                onClick={() => handleColorClick("6691FF")}
+                style={{ background: "#6691FF" }}
+              ></span>
             </div>
           </div>
           <div className="create-btn">
-            <button>Create</button>
+            <button onClick={handleCreateGroup}>Create</button>
           </div>
         </div>
       </div>
