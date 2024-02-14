@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
-const GroupName = ({ groupList }) => {
+const GroupName = ({ groupList, onClick }) => {
+  const [activeGroup, setActiveGroup] = useState(null);
+
+  const handleGroupClick = (group) => {
+    if (onClick) {
+      onClick(group);
+      setActiveGroup(group.name);
+    }
+  };
+
   return (
-    <div className="group-names">
+    <div className={`group-names ${activeGroup ? "active" : ""}`}>
       {groupList.map((group, index) => (
-        <div key={index} className="group-name">
+        <div
+          key={index}
+          className={`group-name ${activeGroup === group.name ? "active" : ""}`}
+          onClick={() => handleGroupClick(group)}
+        >
           <div
             className="group-name-icon"
             style={{ backgroundColor: `#${group.color}` }}

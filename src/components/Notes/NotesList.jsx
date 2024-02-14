@@ -8,19 +8,22 @@ const NotesList = ({ selectedGroup }) => {
   const [newNote, setNewNote] = useState("");
   const [notes, setNotes] = useState([]);
 
+  console.log("selectedGroup:", selectedGroup);
+
   useEffect(() => {
-    // Load notes from local storage based on the selected group
-    const storedNotes =
-      JSON.parse(localStorage.getItem(`notes_${selectedGroup.name}`)) || [];
-    setNotes(storedNotes);
-  }, [selectedGroup]);
+    if (selectedGroup) {
+      const storedNotes =
+        JSON.parse(localStorage.getItem(`notes_${selectedGroup.name}`)) || [];
+      setNotes(storedNotes);
+    }
+  }, [selectedGroup ? selectedGroup.name : ""]);
 
   const handleInputChange = (e) => {
     setNewNote(e.target.value);
   };
 
   const handleAddNote = () => {
-    if (newNote.trim() !== "") {
+    if (newNote.trim() !== "" && selectedGroup) {
       const updatedNotes = [...notes, { text: newNote, date: new Date() }];
       setNotes(updatedNotes);
       localStorage.setItem(
