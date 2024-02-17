@@ -2,6 +2,7 @@
 
 :root {
   font-family: "Roboto", sans-serif;
+  font-size: 16px;
 }
 
 * {
@@ -9,38 +10,40 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .wrapper {
   display: flex;
 }
 
 .wrapper .left {
   background: #fff;
-  width: 320px;
-  padding: 10px 0px 10px 30px;
+  width: 20rem;
+  padding: 0.63rem 0 0.63rem 1.88rem;
   height: 100vh;
   position: relative;
 }
 
 .logo {
-  margin: 25px;
+  margin: 1.56rem;
   color: gray;
   font-weight: 600;
 }
 
 .group-names-wrapper {
-  height: calc(100vh - 89px);
+  height: calc(100vh - 5.56rem);
   overflow: auto;
-  margin-bottom: 25px;
+  margin-bottom: 1.56rem;
   background: #fff;
 }
+
 .group-name {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 10px;
+  margin: 0.63rem 0;
+  padding: 0.63rem;
+  border-radius: 0.63rem;
 }
 
 .group-name.active {
@@ -52,8 +55,8 @@
   color: #fff;
   background: deeppink;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 3.2rem;
+  height: 3.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,19 +67,19 @@
   justify-content: flex-end;
   align-items: center;
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 1.25rem;
+  right: 1.25rem;
 }
 
 .add-group-icon button {
-  width: 60px;
-  height: 60px;
+  width: 3.75rem;
+  height: 3.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #16008b;
   border-radius: 50%;
-  font-size: 50px;
+  font-size: 3.13rem;
   color: #fff;
   border: none;
 }
@@ -85,7 +88,7 @@
   background: #1111aa;
 }
 
-/* Modal  */
+/* Modal */
 
 .modal-overlay {
   position: fixed;
@@ -93,7 +96,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black overlay */
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,36 +104,36 @@
 }
 
 .modal {
-  width: 400px;
+  width: 25rem;
   background: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 1.25rem;
+  border-radius: 0.31rem;
+  box-shadow: 0 0 0.63rem rgba(0, 0, 0, 0.3);
 }
 
 .modal-content label {
   color: #000;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 0.88rem;
 }
 
 .modal-content input {
-  padding: 5px 10px;
-  border: 1px solid gray;
-  outline: 1px solid gray;
-  border-radius: 15px;
+  padding: 0.31rem 0.63rem;
+  border: 0.06rem solid gray;
+  outline: 0.06rem solid gray;
+  border-radius: 0.94rem;
   width: 70%;
 }
 
 .input-group {
   display: flex;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 0.63rem;
 }
 
 .modal-content h4 {
-  margin-bottom: 15px;
+  margin-bottom: 0.94rem;
 }
 
 .choose-color {
@@ -139,12 +142,16 @@
 }
 
 .choose-color .color-box {
-  width: 20px;
-  height: 20px;
+  width: 1.56rem;
+  height: 1.56rem;
   border-radius: 50%;
   display: inline-block;
-  margin: 0 3px;
+  margin: 0 0.19rem;
   cursor: pointer;
+}
+
+.choose-color .color-box:active {
+  border: 0.13rem solid #fff;
 }
 
 .create-btn {
@@ -153,12 +160,12 @@
 }
 
 .create-btn button {
-  padding: 0.6em 1.2em;
+  padding: 0.6em 1em;
   background: #001f8b;
   color: #fff;
   border: none;
-  border-radius: 5px;
-  margin-top: 10px;
+  border-radius: 0.31rem;
+  margin-top: 0.63rem;
   cursor: pointer;
 }
 
@@ -166,12 +173,12 @@
   background: #1111aa;
 }
 
-/* Right  */
+/* Right */
 
 .right {
-  width: calc(100% - 320px);
+  width: calc(100% - 20rem);
   background: #dae5f5;
-  padding: 10px 30px;
+  padding: 0.63rem 1.88rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -191,7 +198,7 @@
 }
 
 .right .home-wrapper h1 {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .right .home-wrapper p {
@@ -202,7 +209,42 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 0.63rem;
   position: absolute;
-  bottom: 25px;
+  bottom: 1.56rem;
+}
+
+@media only screen and (max-width: 499px) {
+  .wrapper {
+    flex-direction: column-reverse;
+    background: rebeccapurple;
+  }
+
+  .wrapper .left {
+    width: 100%;
+    height: 45vh;
+    padding: 0.63rem 1.88rem;
+  }
+
+  .notes-container,
+  .right {
+    width: 100%;
+    height: 45vh;
+  }
+
+  .notes-wrapper {
+    height: 24.7vh;
+  }
+
+  .notes-footer button {
+    right: 15%;
+  }
+
+  .group-names-wrapper {
+    height: 32vh;
+  }
+
+  .notes-footer {
+    height: 100px;
+  }
 }

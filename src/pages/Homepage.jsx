@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import GroupName from "../components/GroupName/GroupName";
 import Modal from "../components/Modal/Modal";
 import NotesList from "../components/Notes/NotesList";
-import DefaultScreen from "../components/GroupName/DefaultScreen/DefaultScreen";
+import DefaultScreen from "../components/DefaultScreen/DefaultScreen";
 
 const Homepage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

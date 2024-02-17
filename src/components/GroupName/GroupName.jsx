@@ -22,7 +22,15 @@ const GroupName = ({ groupList, onClick }) => {
             className="group-name-icon"
             style={{ backgroundColor: `#${group.color}` }}
           >
-            <h2>{group.name.charAt(0)}</h2>
+            <h2>
+              {group.name.length === 1
+                ? group.name
+                : group.name.includes(" ")
+                ? `${group.name.charAt(0)}${group.name
+                    .split(" ")[1]
+                    ?.charAt(0)}`
+                : group.name.charAt(0)}
+            </h2>
           </div>
           <div className="group-name-title">
             <h4>{group.name}</h4>

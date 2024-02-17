@@ -7,6 +7,7 @@ import Notes from "./Notes";
 const NotesList = ({ selectedGroup }) => {
   const [newNote, setNewNote] = useState("");
   const [notes, setNotes] = useState([]);
+  const [isTyping, setIsTyping] = useState(false);
 
   console.log("selectedGroup:", selectedGroup);
 
@@ -20,6 +21,7 @@ const NotesList = ({ selectedGroup }) => {
 
   const handleInputChange = (e) => {
     setNewNote(e.target.value);
+    setIsTyping(e.target.value.trim() !== "");
   };
 
   const handleAddNote = () => {
@@ -31,6 +33,13 @@ const NotesList = ({ selectedGroup }) => {
         JSON.stringify(updatedNotes)
       );
       setNewNote("");
+      setIsTyping(false);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleAddNote();
     }
   };
 
@@ -41,7 +50,15 @@ const NotesList = ({ selectedGroup }) => {
           className="header-name-icon"
           style={{ backgroundColor: `#${selectedGroup.color}` }}
         >
-          <h2>{selectedGroup.name.charAt(0)}</h2>
+          <h2>
+            {selectedGroup.name.length === 1
+              ? selectedGroup.name
+              : selectedGroup.name.includes(" ")
+              ? `${selectedGroup.name.charAt(0)}${
+                  selectedGroup.name.split(" ")[1]?.charAt(0) || ""
+                }`
+              : selectedGroup.name.charAt(0)}
+          </h2>
         </div>
         <div className="header-name-title">
           <h4>{selectedGroup.name}</h4>
@@ -59,9 +76,10 @@ const NotesList = ({ selectedGroup }) => {
           placeholder="Enter your text here..........."
           value={newNote}
           onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
         ></textarea>
         <button onClick={handleAddNote}>
-          <img src={arrowBtnGray} alt="Arrow" />
+          <img src={isTyping ? arrowBtnBlue : arrowBtnGray} alt="Arrow" />
         </button>
       </div>
     </div>

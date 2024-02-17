@@ -1,6 +1,6 @@
 import React from "react";
-import homeBanner from "../../../assets/pocket-notes-img.png";
-import lockIcon from "../../../assets/Vector.png";
+import homeBanner from "../../assets/pocket-notes-img.png";
+import lockIcon from "../../assets/Vector.png";
 
 const DefaultScreen = () => {
   return (
