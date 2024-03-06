@@ -1,4 +1,5 @@
 import React from "react";
+import deleteIcon from "../../assets/trash-bin.png";
 
 const Notes = ({ text, date }) => {
   const optionsDate = { day: "numeric", month: "long", year: "numeric" };
@@ -14,6 +15,12 @@ const Notes = ({ text, date }) => {
 
   return (
     <div className="notes">
+      <div
+        className="notes-delete-icon"
+        // onClick={() => handleDelete(group)}
+      >
+        <img src={deleteIcon} alt="delete-icon" className="delete-icon" />
+      </div>
       <div className="note">
         <p>{text}</p>
       </div>

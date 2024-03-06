@@ -3,17 +3,27 @@ import GroupName from "../components/GroupName/GroupName";
 import Modal from "../components/Modal/Modal";
 import NotesList from "../components/Notes/NotesList";
 import DefaultScreen from "../components/DefaultScreen/DefaultScreen";
+import deleteIcon from "../assets/trash-bin.png";
 
 const Homepage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [groupList, setGroupList] = useState([]);
-  const [selectedGroup, setSelectedGroup] = useState(""); // Add this line
+  const [selectedGroup, setSelectedGroup] = useState(null);
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
     // Load group list from local storage on component mount
     const storedGroups = JSON.parse(localStorage.getItem("groups")) || [];
     setGroupList(storedGroups);
+    setDataLoaded(true);
   }, []);
+
+  useEffect(() => {
+    // Update local storage whenever groupList changes (e.g., group is deleted)
+    if (dataLoaded) {
+      localStorage.setItem("groups", JSON.stringify(groupList));
+    }
+  }, [groupList, dataLoaded]);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -30,15 +40,24 @@ const Homepage = () => {
   };
 
   const selectedGroupHandler = (group) => {
-    const storedGroups = JSON.parse(localStorage.getItem("groups")) || [];
-
-    const selectedGroupName = storedGroups.find((g) => g.name === group.name);
-
-    console.log("Selected Group:", selectedGroupName);
-
-    // Update the selected group state
-    setSelectedGroup(selectedGroupName);
+    setSelectedGroup(group);
   };
+
+  const deleteGroupHandler = (groupToDelete) => {
+    const updatedGroupList = groupList.filter(
+      (group) => group !== groupToDelete
+    );
+    setGroupList(updatedGroupList);
+
+    // Reset selected group if the deleted group is the currently selected one
+    if (selectedGroup === groupToDelete) {
+      setSelectedGroup(null);
+    }
+  };
+
+  if (!dataLoaded) {
+    return <div>Loading...</div>; // You can replace this with a loading indicator
+  }
 
   return (
     <div className="wrapper">
@@ -47,7 +66,11 @@ const Homepage = () => {
           <h2>Pocket Notes</h2>
         </div>
         <div className="group-names-wrapper">
-          <GroupName groupList={groupList} onClick={selectedGroupHandler} />
+          <GroupName
+            groupList={groupList}
+            onClick={selectedGroupHandler}
+            onDelete={deleteGroupHandler}
+          />
           <div className="add-group-icon">
             <button onClick={openModal}>+</button>
           </div>

@@ -36,9 +36,10 @@
   background: #fff;
 }
 
-.group-name {
+.group-name-box {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   gap: 1.25rem;
   align-items: center;
   margin: 0.63rem 0;
@@ -46,8 +47,30 @@
   border-radius: 0.63rem;
 }
 
-.group-name.active {
+.group-name-box.active {
   background: #2f2f2f17;
+}
+
+.group-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.notes-delete-icon .delete-icon,
+.group-name-delete-icon .delete-icon {
+  width: 20px;
+}
+
+.notes-delete-icon .delete-icon:hover,
+.group-name-delete-icon .delete-icon:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.notes-delete-icon .delete-icon:active,
+.group-name-delete-icon .delete-icon:active {
+  transform: scale(0.9);
 }
 
 .group-name-icon {
@@ -152,6 +175,10 @@
 
 .choose-color .color-box:active {
   border: 0.13rem solid #fff;
+}
+
+.choose-color .color-box.selected {
+  border: 2px solid #3d3d3d;
 }
 
 .create-btn {

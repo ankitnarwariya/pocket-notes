@@ -48,37 +48,50 @@ const Modal = ({ closeModal, addGroupToList }) => {
             <label htmlFor="Choose-color">Choose colour</label>
             <div className="choose-color">
               <span
-                className="color-box"
+                className={`color-box ${
+                  selectedColor === "B38BFA" ? "selected" : ""
+                }`}
                 onClick={() => handleColorClick("B38BFA")}
                 style={{ background: "#B38BFA" }}
               ></span>
               <span
-                className="color-box"
+                className={`color-box ${
+                  selectedColor === "FF79F2" ? "selected" : ""
+                }`}
                 onClick={() => handleColorClick("FF79F2")}
                 style={{ background: "#FF79F2" }}
               ></span>
               <span
-                className="color-box"
+                className={`color-box ${
+                  selectedColor === "43E6FC" ? "selected" : ""
+                }`}
                 onClick={() => handleColorClick("43E6FC")}
                 style={{ background: "#43E6FC" }}
               ></span>
               <span
-                className="color-box"
+                className={`color-box ${
+                  selectedColor === "F19576" ? "selected" : ""
+                }`}
                 onClick={() => handleColorClick("F19576")}
                 style={{ background: "#F19576" }}
               ></span>
               <span
-                className="color-box"
+                className={`color-box ${
+                  selectedColor === "0047FF" ? "selected" : ""
+                }`}
                 onClick={() => handleColorClick("0047FF")}
                 style={{ background: "#0047FF" }}
               ></span>
               <span
-                className="color-box"
+                className={`color-box ${
+                  selectedColor === "6691FF" ? "selected" : ""
+                }`}
                 onClick={() => handleColorClick("6691FF")}
                 style={{ background: "#6691FF" }}
               ></span>
             </div>
           </div>
+
           <div className="create-btn">
             <button onClick={handleCreateGroup}>Create</button>
           </div>
